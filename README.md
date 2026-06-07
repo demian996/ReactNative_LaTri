@@ -1,50 +1,105 @@
-# Welcome to your Expo app 👋
+# ReactNative_LaTri 🇪🇨⚽
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+¡Bienvenido al proyecto **ReactNative_LaTri**! Esta es una aplicación móvil desarrollada con **React Native** y **Expo** (v54.0) diseñada para los aficionados de la Selección Ecuatoriana de Fútbol ("La Tri").
 
-## Get started
+La aplicación muestra información clave del equipo nacional, cuenta con una interfaz temática inspirada en los colores de la bandera de Ecuador (Amarillo, Azul y Rojo) y cuenta con un temporizador dinámico en tiempo real para el próximo partido.
 
-1. Install dependencies
+---
 
+## 🚀 Características Principales
+
+- **Cuenta Regresiva en Tiempo Real**: Temporizador dinámico que descuenta los días, horas, minutos y segundos para el próximo encuentro de la Selección (Ecuador vs. Costa de Marfil).
+- **Información Oficial de la Selección**: Detalla datos actuales como la Confederación (CONMEBOL), el director técnico actual (Sebastián Beccacece) y el estadio principal (Estadio Rodrigo Paz Delgado).
+- **Diseño Personalizado**: Cabecera dinámica y estilizada que evoca la bandera tricolor.
+- **Enrutamiento Basado en Archivos**: Utiliza `expo-router` para una navegación moderna y fluida entre pestañas.
+- **Soporte Multiplataforma**: Ejecución en Android, iOS y Web.
+
+---
+
+## 🛠️ Requisitos Previos
+
+Asegúrate de tener instalado en tu máquina de desarrollo:
+- [Node.js](https://nodejs.org/) (versión 18 o superior)
+- [pnpm](https://pnpm.io/) (Recomendado, el proyecto incluye un archivo `pnpm-lock.yaml`) o `npm` / `yarn`.
+- Simulador de Android (Android Studio) o iOS (Xcode, solo macOS) o la aplicación **Expo Go** en tu dispositivo móvil.
+
+---
+
+## 📦 Instalación y Configuración
+
+1. **Clonar el repositorio** (si es necesario):
+   ```bash
+   git clone <url-del-repositorio>
+   cd ReactNative_LaTri
+   ```
+
+2. **Instalar dependencias**:
+   Se recomienda usar `pnpm` ya que el proyecto está estructurado con este gestor de paquetes:
+   ```bash
+   pnpm install
+   ```
+   *Alternativa con npm:*
    ```bash
    npm install
    ```
 
-2. Start the app
+---
 
-   ```bash
-   npx expo start
-   ```
+## 🏃‍♂️ Ejecución del Proyecto
 
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+Para iniciar el servidor de desarrollo de Expo, ejecuta:
 
 ```bash
-npm run reset-project
+pnpm expo start
+```
+*O con npm:*
+```bash
+npx expo start
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Una vez que el servidor esté corriendo, puedes:
+- Presionar **`a`** para abrir en el emulador de Android.
+- Presionar **`i`** para abrir en el simulador de iOS.
+- Presionar **`w`** para abrir en el navegador web.
+- Escanear el código QR en la terminal utilizando la aplicación **Expo Go** en tu celular para probarlo directamente en tu dispositivo físico.
 
-## Learn more
+### Scripts Adicionales
 
-To learn more about developing your project with Expo, look at the following resources:
+En `package.json` dispones de los siguientes comandos preconfigurados:
+- `pnpm android` / `npm run android`: Inicia la compilación y ejecución directa en Android.
+- `pnpm ios` / `npm run ios`: Inicia la compilación y ejecución directa en iOS.
+- `pnpm web` / `npm run web`: Abre el proyecto en el navegador web.
+- `pnpm lint` / `npm run lint`: Ejecuta el analizador de código (Linter) de Expo.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+---
 
-## Join the community
+## 📂 Estructura del Proyecto
 
-Join our community of developers creating universal apps.
+La estructura principal del código fuente se organiza de la siguiente manera:
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```text
+ReactNative_LaTri/
+├── app/                  # Directorio principal de rutas (Expo Router)
+│   ├── (tabs)/           # Pestañas de la aplicación
+│   │   ├── _layout.tsx   # Configuración de navegación de pestañas
+│   │   ├── index.tsx     # Pantalla de inicio (Countdown de La Tri & Detalles)
+│   │   └── explore.tsx   # Pantalla de exploración y documentación interna
+│   ├── _layout.tsx       # Root layout de la aplicación
+│   └── modal.tsx         # Pantalla modal secundaria
+├── components/           # Componentes visuales reutilizables
+├── constants/            # Valores constantes y temas visuales (colores, fuentes)
+├── styles/               # Estilos globales y específicos de pantallas
+│   └── home.styles.ts    # Estilos CSS de la pantalla de inicio (Tricolor)
+├── assets/               # Recursos multimedia (imágenes, logos, iconos)
+├── package.json          # Archivo de configuración y dependencias de Node
+└── app.json              # Configuración general de Expo (nombre, versión, etc.)
+```
+
+---
+
+## 🎨 Temas y Estilos
+
+El proyecto utiliza un sistema de diseño modular:
+- Los estilos visuales se encuentran centralizados en el directorio `styles/`.
+- La pantalla de inicio (`app/(tabs)/index.tsx`) utiliza la paleta oficial tricolor para renderizar la barra superior mediante las propiedades `yellowStripe`, `blueStripe` y `redStripe` definidas en [home.styles.ts](file:///c:/Users/demia/OneDrive/Desktop/disco/10mo%20semestre/Dispositivos%20moviles/Trabajos/ReactNative_LaTri/styles/home.styles.ts).
+
